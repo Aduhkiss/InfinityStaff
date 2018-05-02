@@ -5,3 +5,5 @@ version: 1.0
 commands:
   freeze:
     description: Freeze a Player
+  randomtp:
+    description: Teleport to a Random player
