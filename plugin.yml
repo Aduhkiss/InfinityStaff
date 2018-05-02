@@ -7,3 +7,5 @@ commands:
     description: Freeze a Player
   randomtp:
     description: Teleport to a Random player
+  sc:
+    description: Communicate with other staff

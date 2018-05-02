@@ -9,6 +9,16 @@ public class Permissions {
 	 */
 	
 	public static boolean hasPerm(Player p, Action a) {
+		if(p.isOp() || p.hasPermission("infinitystaff.*")) {
+			return true;
+		}
+		if(p.hasPermission("infinitystaff." + a.toString())) {
+			return true;
+		}
+		return false;
+	}
+	/*
+	public static boolean hasPerm(Player p, Action a) {
 		if(p.isOp()) {
 			return true;
 		}
@@ -27,6 +37,13 @@ public class Permissions {
 			}
 			return false;
 		}
+		if(a == Action.STAFFCHAT) {
+			if(p.hasPermission("infinitystaff.staffchat")) {
+				return true;
+			}
+			return false;
+		}
 		return false;
 	}
+	*/
 }

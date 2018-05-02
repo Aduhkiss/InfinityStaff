@@ -1,9 +1,5 @@
-package net.angusbeefgaming.staff.teleport;
+package net.angusbeefgaming.staff.staffchat;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,27 +10,24 @@ import net.angusbeefgaming.staff.util.Permissions;
 import net.angusbeefgaming.staff.util.UtilServer;
 import net.md_5.bungee.api.ChatColor;
 
-public class RandomTPCommand implements CommandExecutor {
+public class StaffChatCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
-		
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
 		
-		if(!Permissions.hasPerm(player, Action.RANDOMTP)) {
+		if(!Permissions.hasPerm(player, Action.STAFFCHAT)) {
 			player.sendMessage(ChatColor.RED + "I'm Sorry, but I cannot allow you to do that.");
 			return false;
 		}
-		/*
-		if(Bukkit.getOnlinePlayers().size() >= 1) {
-			player.sendMessage(ChatColor.RED + "There are not enough players to RandomTP!");
+		
+		if(!(args.length >= 1)) {
+			player.sendMessage(ChatColor.RED + "Please Use the command like this: /sc <Message>");
 			return false;
 		}
-		*/
 		
-		Player target = UtilServer.getRandomPlayer();
+		String message = UtilServer.combine(args, 0);
 		
-		player.teleport(target.getLocation());
-		player.sendMessage(ChatColor.GREEN + "You have been teleported to " + target.getName());
+		StaffChatManager.sendToStaff(player, message);
 		return true;
 	}
 }
