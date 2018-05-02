@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import net.angusbeefgaming.staff.util.Action;
 import net.angusbeefgaming.staff.util.Permissions;
+import net.angusbeefgaming.staff.util.UtilServer;
 import net.md_5.bungee.api.ChatColor;
 
 public class RandomTPCommand implements CommandExecutor {
@@ -28,10 +29,8 @@ public class RandomTPCommand implements CommandExecutor {
 			player.sendMessage(ChatColor.RED + "There are not enough players to RandomTP!");
 			return false;
 		}
-		
-		int rando = (int) (Math.random() * Bukkit.getOnlinePlayers().size());
-		List playerList = new ArrayList(Bukkit.getOnlinePlayers());
-		Player target = (Player) playerList.get(rando);
+
+		Player target = UtilServer.getRandomPlayer();
 		
 		player.teleport(target.getLocation());
 		player.sendMessage(ChatColor.GREEN + "You have been teleported to " + target.getName());
