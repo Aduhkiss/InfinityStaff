@@ -1,0 +1,7 @@
+name: InfinityStaff
+author: ["Atticus Zambrana"]
+main: net.angusbeefgaming.staff
+version: 1.0
+commands:
+  freeze:
+    description: Freeze a Player
