@@ -21,29 +21,35 @@ public class FreezeCommand implements CommandExecutor {
 			return false;
 		}
 		
-		if(args.length <= 1) {
-			Player target = Bukkit.getPlayer(args[0]);
-			if(target == null) {
-				player.sendMessage(ChatColor.RED + "I'm Sorry, but that player was not found!");
-				return false;
-			}
-			
-			if(FreezeManager.frozenPlayers.get(target)) {
-				FreezeManager.frozenPlayers.put(player, false);
-				target.sendMessage(ChatColor.GREEN + "You have been unfrozen!");
-				player.sendMessage(ChatColor.GREEN + "You have unfrozen " + target.getName());
-				return true;
-			}
-			else {
-				FreezeManager.frozenPlayers.put(player, true);
-				target.sendMessage(ChatColor.RED + "You have been frozen by a staff member!");
-				player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
-				return true;
-			}
-		}
-		else {
+		if(!(args.length > 1)) {
 			player.sendMessage(ChatColor.RED + "Please Use the command like this: /freeze <Player>");
 			return false;
+		}
+		
+		Player target = Bukkit.getPlayer(args[0]);
+		if(target == null) {
+			player.sendMessage(ChatColor.RED + "I'm Sorry, but that player was not found!");
+			return false;
+		}
+		
+		if(FreezeManager.frozenPlayers.get(target) == null) {
+			FreezeManager.frozenPlayers.put(player, true);
+			target.sendMessage(ChatColor.RED + "You have been frozen by a staff member!");
+			player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
+			return true;
+		}
+		
+		if(FreezeManager.frozenPlayers.get(target)) {
+			FreezeManager.frozenPlayers.put(player, false);
+			target.sendMessage(ChatColor.GREEN + "You have been unfrozen!");
+			player.sendMessage(ChatColor.GREEN + "You have unfrozen " + target.getName());
+			return true;
+		}
+		else {
+			FreezeManager.frozenPlayers.put(player, true);
+			target.sendMessage(ChatColor.RED + "You have been frozen by a staff member!");
+			player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
+			return true;
 		}
 	}
 
