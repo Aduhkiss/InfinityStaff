@@ -21,7 +21,7 @@ public class FreezeCommand implements CommandExecutor {
 			return false;
 		}
 		
-		if(!(args.length > 1)) {
+		if(!(args.length >= 1)) {
 			player.sendMessage(ChatColor.RED + "Please Use the command like this: /freeze <Player>");
 			return false;
 		}
