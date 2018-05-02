@@ -21,7 +21,7 @@ public class FreezeCommand implements CommandExecutor {
 			return false;
 		}
 		
-		if(args.length < 1) {
+		if(args.length <= 1) {
 			Player target = Bukkit.getPlayer(args[0]);
 			if(target == null) {
 				player.sendMessage(ChatColor.RED + "I'm Sorry, but that player was not found!");
