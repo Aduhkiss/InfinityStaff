@@ -28,7 +28,15 @@ public class ResoveReportCommand implements CommandExecutor {
 		int reportToResolve = Integer.parseInt(args[0]);
 		Report re = ReportsManager.getReport(reportToResolve);
 		
-		ReportsManager.resolveReport(ReportsManager.getReport(reportToResolve));
+		try {
+			ReportsManager.resolveReport(ReportsManager.getReport(reportToResolve));
+		}
+		catch(NullPointerException e) {
+			player.sendMessage(ChatColor.RED + "That Report cannot be found!");
+			return false;
+		}
+		
+		re.resolve();
 		
 		for(Player p : Bukkit.getOnlinePlayers()) {
 			if(Permissions.hasPerm(p, Action.REPORTREVIEW)) {
