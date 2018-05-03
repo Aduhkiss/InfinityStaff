@@ -7,11 +7,14 @@ public class Report {
 	private String target;
 	private String reporter;
 	private String reason;
+	private boolean resolved;
+	private int id;
 	
-	public Report(String target, String reporter, String reason) {
+	public Report(String target, String reporter, String reason, int id) {
 		this.target = target;
 		this.reporter = reporter;
 		this.reason = reason;
+		this.id = id;
 	}
 	
 	public String getTarget() {
@@ -22,6 +25,15 @@ public class Report {
 	}
 	public String getReason() {
 		return reason;
+	}
+	public boolean isResolved() {
+		return resolved;
+	}
+	public void resolve() {
+		resolved = true;
+	}
+	public int getId() {
+		return id;
 	}
 	
 	public boolean isTargetOnline() {

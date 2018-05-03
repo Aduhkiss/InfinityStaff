@@ -9,3 +9,9 @@ commands:
     description: Teleport to a Random player
   sc:
     description: Communicate with other staff
+  report:
+    description: Report other players
+  reviewreports:
+    description: View all Unresolved Reports
+  resolve:
+    description: Resolve an Active Report
