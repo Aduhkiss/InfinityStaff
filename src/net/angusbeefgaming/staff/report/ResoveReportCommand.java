@@ -26,17 +26,26 @@ public class ResoveReportCommand implements CommandExecutor {
 		}
 		
 		int reportToResolve = Integer.parseInt(args[0]);
-		Report re = ReportsManager.getReport(reportToResolve);
+		Report re;
 		
 		try {
-			ReportsManager.resolveReport(ReportsManager.getReport(reportToResolve));
+			re = ReportsManager.getReport(reportToResolve);
 		}
 		catch(NullPointerException e) {
 			player.sendMessage(ChatColor.RED + "That Report cannot be found!");
 			return false;
 		}
 		
-		re.resolve();
+		if(re == null) {
+			player.sendMessage(ChatColor.RED + "That Report cannot be found!");
+			return false;
+		}
+		
+		if(re.isResolved()) {
+			player.sendMessage(ChatColor.RED + "That Report is already marked as resolved!");
+			return false;
+		}
+		ReportsManager.resolveReport(ReportsManager.getReport(reportToResolve));
 		
 		for(Player p : Bukkit.getOnlinePlayers()) {
 			if(Permissions.hasPerm(p, Action.REPORTREVIEW)) {
