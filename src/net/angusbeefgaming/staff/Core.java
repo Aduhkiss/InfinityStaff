@@ -12,6 +12,11 @@ import net.angusbeefgaming.staff.teleport.RandomTPCommand;
 
 public class Core extends JavaPlugin {
 	
+	/*
+	 * Welcome to the Infinity Staff Plugin
+	 * This plugin was coded and is maintained by Atticus Zambrana (MrBeefSteak)
+	 */
+	
 	@Override
 	public void onEnable() {
 		getCommand("freeze").setExecutor(new FreezeCommand());
