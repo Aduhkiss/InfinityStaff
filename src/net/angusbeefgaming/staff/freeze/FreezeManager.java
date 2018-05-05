@@ -8,11 +8,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import net.angusbeefgaming.staff.Core;
 import net.md_5.bungee.api.ChatColor;
 
 public class FreezeManager implements Listener {
 	
 	public static Map<Player, Boolean> frozenPlayers = new HashMap<Player, Boolean>();
+	
+	static Core plugin = Core.getCore();
 
 	@EventHandler
 	public void onMove(PlayerMoveEvent e) {
@@ -27,5 +30,9 @@ public class FreezeManager implements Listener {
 		e.getPlayer().sendMessage(ChatColor.RED + "Hey! You cannot move while you are frozen!");
 		
 		return;
+	}
+	
+	public static String getFreezeMessage() {
+		return plugin.getConfig().getString("freeze-message");
 	}
 }

@@ -6,15 +6,22 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import net.angusbeefgaming.staff.Core;
 import net.angusbeefgaming.staff.util.Action;
 import net.angusbeefgaming.staff.util.Permissions;
 import net.md_5.bungee.api.ChatColor;
 
 public class FreezeCommand implements CommandExecutor {
+
+	Core plugin = Core.getCore();
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
+		
+		if(plugin.getConfig().getBoolean("toggle.freeze") != true) {
+			return false;
+		}
 		
 		if(!Permissions.hasPerm(player, Action.FREEZE)) {
 			player.sendMessage(ChatColor.RED + "I'm Sorry, but I cannot allow you to do that.");
@@ -34,7 +41,7 @@ public class FreezeCommand implements CommandExecutor {
 		
 		if(FreezeManager.frozenPlayers.get(target) == null) {
 			FreezeManager.frozenPlayers.put(player, true);
-			target.sendMessage(ChatColor.RED + "You have been frozen by a staff member!");
+			target.sendMessage(ChatColor.RED + FreezeManager.getFreezeMessage());
 			player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
 			return true;
 		}
@@ -47,7 +54,7 @@ public class FreezeCommand implements CommandExecutor {
 		}
 		else {
 			FreezeManager.frozenPlayers.put(player, true);
-			target.sendMessage(ChatColor.RED + "You have been frozen by a staff member!");
+			target.sendMessage(ChatColor.RED + FreezeManager.getFreezeMessage());
 			player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
 			return true;
 		}

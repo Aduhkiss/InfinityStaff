@@ -1,0 +1,9 @@
+# The Message that is displayed to players when they are frozen
+freeze-message: 'You have been frozen! Please join our teamspeak at: ts.skycade.net'
+
+# Toggle the ability to use certain features in the plugin
+toggle:
+  freeze: true
+  report: true
+  randomtp: true
+  staffchat: true
