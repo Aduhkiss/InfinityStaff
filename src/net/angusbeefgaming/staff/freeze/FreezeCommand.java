@@ -40,20 +40,20 @@ public class FreezeCommand implements CommandExecutor {
 		}
 		
 		if(FreezeManager.frozenPlayers.get(target) == null) {
-			FreezeManager.frozenPlayers.put(player, true);
+			FreezeManager.frozenPlayers.put(target, true);
 			target.sendMessage(ChatColor.RED + FreezeManager.getFreezeMessage());
 			player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
 			return true;
 		}
 		
 		if(FreezeManager.frozenPlayers.get(target)) {
-			FreezeManager.frozenPlayers.put(player, false);
+			FreezeManager.frozenPlayers.put(target, false);
 			target.sendMessage(ChatColor.GREEN + "You have been unfrozen!");
 			player.sendMessage(ChatColor.GREEN + "You have unfrozen " + target.getName());
 			return true;
 		}
 		else {
-			FreezeManager.frozenPlayers.put(player, true);
+			FreezeManager.frozenPlayers.put(target, true);
 			target.sendMessage(ChatColor.RED + FreezeManager.getFreezeMessage());
 			player.sendMessage(ChatColor.GREEN + "You have frozen " + target.getName());
 			return true;

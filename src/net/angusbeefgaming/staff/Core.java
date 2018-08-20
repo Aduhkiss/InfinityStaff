@@ -25,19 +25,21 @@ public class Core extends JavaPlugin {
 	/*
 	 * Welcome to the Infinity Staff Plugin
 	 * This plugin was coded and is maintained by Atticus Zambrana (MrBeefSteak)
+	 * 
+	 * Use Core plugin = Core.getCore(); to get plugin
 	 */
 	
 	@Override
 	public void onEnable() {
 		instance = this;
-		getCommand("freeze").setExecutor(new FreezeCommand());
-		getCommand("randomtp").setExecutor(new RandomTPCommand());
+		//getCommand("freeze").setExecutor(new FreezeCommand());
+		//getCommand("randomtp").setExecutor(new RandomTPCommand());
 		getCommand("sc").setExecutor(new StaffChatCommand());
 		getCommand("report").setExecutor(new ReportCommand());
 		getCommand("reviewreports").setExecutor(new ReviewReportsCommand());
 		getCommand("resolve").setExecutor(new ResoveReportCommand());
 		
-		getServer().getPluginManager().registerEvents(new FreezeManager(), this);
+		//getServer().getPluginManager().registerEvents(new FreezeManager(), this);
 		
 		// Setup the Configuration File
 		setupConfig();

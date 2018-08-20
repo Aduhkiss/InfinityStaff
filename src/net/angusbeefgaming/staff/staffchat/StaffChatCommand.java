@@ -14,26 +14,33 @@ import net.md_5.bungee.api.ChatColor;
 public class StaffChatCommand implements CommandExecutor {
 	Core plugin = Core.getCore();
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
-		if(!(sender instanceof Player)) return false;
-		Player player = (Player) sender;
 		
 		if(plugin.getConfig().getBoolean("toggle.staffchat") != true) {
 			return false;
 		}
 		
-		if(!Permissions.hasPerm(player, Action.STAFFCHAT)) {
-			player.sendMessage(ChatColor.RED + "I'm Sorry, but I cannot allow you to do that.");
-			return false;
+		if(sender instanceof Player) {
+			Player player = (Player) sender;
+			if(!Permissions.hasPerm(player, Action.STAFFCHAT)) {
+				player.sendMessage(ChatColor.RED + "I'm Sorry, but I cannot allow you to do that.");
+				return false;
+			}
+			
+			if(!(args.length >= 1)) {
+				player.sendMessage(ChatColor.RED + "Please Use the command like this: /sc <Message>");
+				return false;
+			}
+			
+			String message = UtilServer.combine(args, 0);
+			
+			StaffChatManager.sendToStaff(player, message);
+			return true;
+		}
+		else {
+			String message = UtilServer.combine(args, 0);
+			StaffChatManager.consoleMessage(message);
+			return true;
 		}
 		
-		if(!(args.length >= 1)) {
-			player.sendMessage(ChatColor.RED + "Please Use the command like this: /sc <Message>");
-			return false;
-		}
-		
-		String message = UtilServer.combine(args, 0);
-		
-		StaffChatManager.sendToStaff(player, message);
-		return true;
 	}
 }

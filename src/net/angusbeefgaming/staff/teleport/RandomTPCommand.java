@@ -18,29 +18,6 @@ import net.md_5.bungee.api.ChatColor;
 public class RandomTPCommand implements CommandExecutor {
 	Core plugin = Core.getCore();
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
-		
-		if(!(sender instanceof Player)) return false;
-		Player player = (Player) sender;
-		
-		if(plugin.getConfig().getBoolean("toggle.randomtp") != true) {
-			return false;
-		}
-		
-		if(!Permissions.hasPerm(player, Action.RANDOMTP)) {
-			player.sendMessage(ChatColor.RED + "I'm Sorry, but I cannot allow you to do that.");
-			return false;
-		}
-		/*
-		if(Bukkit.getOnlinePlayers().size() >= 1) {
-			player.sendMessage(ChatColor.RED + "There are not enough players to RandomTP!");
-			return false;
-		}
-		*/
-		
-		Player target = UtilServer.getRandomPlayer();
-		
-		player.teleport(target.getLocation());
-		player.sendMessage(ChatColor.GREEN + "You have been teleported to " + target.getName());
-		return true;
+		return false;
 	}
 }

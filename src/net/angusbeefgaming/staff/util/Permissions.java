@@ -17,33 +17,4 @@ public class Permissions {
 		}
 		return false;
 	}
-	/*
-	public static boolean hasPerm(Player p, Action a) {
-		if(p.isOp()) {
-			return true;
-		}
-		if(p.hasPermission("infinitystaff.*")) {
-			return true;
-		}
-		if(a == Action.FREEZE) {
-			if(p.hasPermission("infinitystaff.freeze")) {
-				return true;
-			}
-			return false;
-		}
-		if(a == Action.RANDOMTP) {
-			if(p.hasPermission("infinitystaff.randomtp")) {
-				return true;
-			}
-			return false;
-		}
-		if(a == Action.STAFFCHAT) {
-			if(p.hasPermission("infinitystaff.staffchat")) {
-				return true;
-			}
-			return false;
-		}
-		return false;
-	}
-	*/
 }

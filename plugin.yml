@@ -2,16 +2,16 @@ name: InfinityStaff
 author: ["Atticus Zambrana"]
 main: net.angusbeefgaming.staff.Core
 version: 1.0
-commands:
-  freeze:
-    description: Freeze a Player
+commands: 
   randomtp:
     description: Teleport to a Random player
   sc:
+    aliases: ["s", "staffchat", "ss"]
     description: Communicate with other staff
   report:
     description: Report other players
   reviewreports:
+    aliases: ["rr"]
     description: View all Unresolved Reports
   resolve:
     description: Resolve an Active Report

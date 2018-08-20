@@ -24,8 +24,14 @@ public class ResoveReportCommand implements CommandExecutor {
 			player.sendMessage(ChatColor.RED + "Please Use the command like this: /resolve <Report ID>");
 			return false;
 		}
-		
-		int reportToResolve = Integer.parseInt(args[0]);
+		int reportToResolve = 0;
+		try {
+			reportToResolve = Integer.parseInt(args[0]);
+		}
+		catch(NumberFormatException e) {
+			player.sendMessage(ChatColor.RED + "Report ID's Have to be a number!");
+			return false;
+		}
 		Report re;
 		
 		try {
